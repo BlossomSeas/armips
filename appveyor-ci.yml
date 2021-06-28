@@ -59,6 +59,7 @@ build_script:
       run_script "build/cache/read.ps1"
 
 
+      echo ${env:BUILD_PATH}
       cd ${env:BUILD_PATH}
 
 
@@ -66,8 +67,8 @@ build_script:
   - cmd: |
       REM cmd.exe /c %Build%
 
-      REM mkdir build && cd build
-      cd build
+      mkdir build && cd build
+      REM cd build
       cmake -A Win32 -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
 
