@@ -66,8 +66,9 @@ build_script:
   - cmd: |
       REM cmd.exe /c %Build%
 
-      mkdir build && cd build
-      cmake -DCMAKE_BUILD_TYPE=Release ..
+      REM mkdir build && cd build
+      cd build
+      cmake -A Win32 -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
 
 
