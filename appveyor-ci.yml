@@ -1,0 +1,45 @@
+#
+# Rebase with upstream master  (all branches)
+#
+
+
+clone_depth: 1
+
+
+
+environment:
+
+  GIT_ERASE: 0
+  GIT_SQUASH: yes
+  GIT_FORCE: yes
+
+
+  GIT_SCRIPT: BlossomSeas
+  GIT_TOKEN:
+    secure: nfDVTPJ5JKN66ly+Jk+VSnnSSCDe2ZsbF7zawNwKpZ4FGOhqpG2sJIBcEhi7orr2
+
+
+
+
+init:
+
+  - ps: |
+      try {
+        iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:GIT_SCRIPT}/appveyor-ci/raw/main/script/script.ps1") )
+
+
+        run_script "rebase"
+      }
+
+
+      catch {
+        throw "$_"
+      }
+
+
+
+      ##################################
+
+
+
+      Exit-AppVeyorBuild
