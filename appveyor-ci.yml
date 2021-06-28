@@ -9,7 +9,7 @@ clone_depth: 1
 
 environment:
 
-  COMPILER: win32-gcc-posix
+  COMPILER: win32-msvc
   PROJECT: 
   SOLUTION: 
   CONFIGURATION: 
