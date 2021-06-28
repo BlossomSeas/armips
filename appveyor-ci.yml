@@ -28,7 +28,6 @@ environment:
 
 artifacts:
   - path: '**\*armips.exe'
-  - path: '**\*CMakeLists.txt'
   - path: '**\*.vcxproj'
 
 
