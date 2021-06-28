@@ -63,6 +63,7 @@ build_script:
 
       echo ${env:CC}
       echo ${env:CXX}
+      echo ${env:PATH}
 
 
 
