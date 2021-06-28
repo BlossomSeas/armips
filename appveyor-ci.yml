@@ -27,8 +27,8 @@ environment:
 
 
 artifacts:
-  - path: '**\*armips.exe'
-  - path: '**\*.vcxproj'
+  - path: '**\armips.exe'
+  - path: '**\armips.vcxproj'
 
 
 
