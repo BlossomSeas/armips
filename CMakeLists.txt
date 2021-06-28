@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_C_COMPILER c:/mingw/bin/gcc.exe)
-set(CMAKE_CXX_COMPILER c:/mingw/bin/g++.exe)
 project(armips) 
 
 option(ARMIPS_PRECOMPILE_HEADERS "Use precompiled headers" OFF)
 option(ARMIPS_REGEXP "Enable regexp expression functions" ON)
 option(ARMIPS_USE_STD_FILESYSTEM "Use std::filesystem instead of third party implementation" OFF)
 option(ARMIPS_LIBRARY_ONLY "Build libarmips, skip building armips and armipstests binaries" OFF)
+option(ARMIPS_TESTS "Building armipstests binaries" OFF)
 
 macro(check_compiler VARIABLE NAME)
 	if (${CMAKE_CXX_COMPILER_ID} MATCHES ${NAME})
@@ -46,7 +45,6 @@ function(init_target TARGET_NAME)
 		target_compile_definitions(${TARGET_NAME} PRIVATE ARMIPS_REGEXP=1)
 	endif()
 
-			if(0)
 	if (WIN32)
 		if (MSVC)
 			target_compile_options(${TARGET_NAME} PRIVATE /Zc:__cplusplus)
@@ -58,7 +56,6 @@ function(init_target TARGET_NAME)
 			set_target_properties(${TARGET_NAME} PROPERTIES LINK_FLAGS "-municode")
 		endif()
 	endif()
-			endif()
 endfunction()
 
 # Helper function to automatically set source groups for all source files
@@ -239,26 +236,26 @@ if(NOT ARMIPS_LIBRARY_ONLY)
 		Main/Tests.h
 	)
 
-		if(0)
-	# tests
-	add_executable(armipstests "")
-	init_target(armipstests)
-	target_compile_definitions(armipstests PUBLIC ARMIPS_TESTS)
-	target_link_libraries(armipstests PRIVATE armips)
+	if(ARMIPS_TESTS)
+		# tests
+		add_executable(armipstests "")
+		init_target(armipstests)
+		target_compile_definitions(armipstests PUBLIC ARMIPS_TESTS)
+		target_link_libraries(armipstests PRIVATE armips)
 
-	armips_target_sources(armipstests PRIVATE
-		Main/CommandLineInterface.cpp
-		Main/CommandLineInterface.h
-		Main/main.cpp
-		Main/Tests.cpp
-		Main/Tests.h
-	)
+		armips_target_sources(armipstests PRIVATE
+			Main/CommandLineInterface.cpp
+			Main/CommandLineInterface.h
+			Main/main.cpp
+			Main/Tests.cpp
+			Main/Tests.h
+		)
 
-	enable_testing()
-	add_test(NAME armipstests COMMAND armipstests ${CMAKE_CURRENT_SOURCE_DIR}/Tests)
+		enable_testing()
+		add_test(NAME armipstests COMMAND armipstests ${CMAKE_CURRENT_SOURCE_DIR}/Tests)
 
-	# install
-	install(TARGETS armips-bin RUNTIME DESTINATION .)
-	install(FILES Readme.md DESTINATION .)
-		endif()
+		# install
+		install(TARGETS armips-bin RUNTIME DESTINATION .)
+		install(FILES Readme.md DESTINATION .)
+	endif()
 endif()
