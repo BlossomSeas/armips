@@ -55,10 +55,10 @@ build_script:
 
 
   - ps: |
-      # git_merge branch1
+      git_merge cache_build; run_script "build/cache/read.ps1"
 
-      # git_resolve branch2 file1 both
-      # git_resolve branch2 file2 both
+
+      cd ${env:BUILD_PATH}
 
 
 
@@ -68,3 +68,11 @@ build_script:
       mkdir build && cd build
       cmake -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
+
+
+
+
+on_finish:
+
+  - ps: |
+      run_script "build/cache/write.ps1"
