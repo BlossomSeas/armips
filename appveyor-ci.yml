@@ -71,7 +71,7 @@ build_script:
 
       mkdir build && cd build
       REM cd build
-      cmake -A Win32 -DCMAKE_BUILD_TYPE=Release ..
+      cmake -A Win32 -DCMAKE_C_COMPILER=GNU -DCMAKE_CXX_COMPILER=GNU -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
 
 
