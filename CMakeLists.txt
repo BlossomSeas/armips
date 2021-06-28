@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
-set(CMAKE_C_COMPILER gcc.exe)
-set(CMAKE_CXX_COMPILER g++.exe)
+set(CMAKE_C_COMPILER c:/mingw/bin/gcc.exe)
+set(CMAKE_CXX_COMPILER c:/mingw/bin/g++.exe)
 project(armips) 
 
 option(ARMIPS_PRECOMPILE_HEADERS "Use precompiled headers" OFF)
