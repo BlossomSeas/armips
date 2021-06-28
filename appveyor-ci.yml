@@ -9,7 +9,7 @@ clone_depth: 1
 
 environment:
 
-  COMPILER: win32-msvc
+  COMPILER: win32-gcc-posix
   PROJECT: 
   SOLUTION: 
   CONFIGURATION: 
@@ -28,7 +28,6 @@ environment:
 
 artifacts:
   - path: '**\armips.exe'
-  - path: '**\armips.vcxproj'
 
 
 
