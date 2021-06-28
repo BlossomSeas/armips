@@ -44,6 +44,7 @@ function(init_target TARGET_NAME)
 		target_compile_definitions(${TARGET_NAME} PRIVATE ARMIPS_REGEXP=1)
 	endif()
 
+			if(0)
 	if (WIN32)
 		if (MSVC)
 			target_compile_options(${TARGET_NAME} PRIVATE /Zc:__cplusplus)
@@ -55,6 +56,7 @@ function(init_target TARGET_NAME)
 			set_target_properties(${TARGET_NAME} PROPERTIES LINK_FLAGS "-municode")
 		endif()
 	endif()
+			endif()
 endfunction()
 
 # Helper function to automatically set source groups for all source files
@@ -235,6 +237,7 @@ if(NOT ARMIPS_LIBRARY_ONLY)
 		Main/Tests.h
 	)
 
+		if(0)
 	# tests
 	add_executable(armipstests "")
 	init_target(armipstests)
@@ -255,4 +258,5 @@ if(NOT ARMIPS_LIBRARY_ONLY)
 	# install
 	install(TARGETS armips-bin RUNTIME DESTINATION .)
 	install(FILES Readme.md DESTINATION .)
+		endif()
 endif()
