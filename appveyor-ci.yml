@@ -63,7 +63,7 @@ build_script:
 
       if ((Test-Path -Path "build") -Eq $False) {
         echo "1"
-        mkdir build
+        New-Item -Name "build" -ItemType "directory"
       }
 
       cd build
