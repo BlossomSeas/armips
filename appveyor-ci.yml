@@ -61,6 +61,9 @@ build_script:
       echo ${env:BUILD_PATH}
       cd ${env:BUILD_PATH}
 
+      echo {$env:CC}
+      echo {$env:CXX}
+
 
 
   - cmd: |
