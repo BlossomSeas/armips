@@ -76,4 +76,8 @@ build_script:
 on_finish:
 
   - ps: |
+      cd ${env:APPVEYOR_BUILD_FOLDER}
+      7z a "../cache.zip" "-tzip" "-mx=1" "-y" "-ir!.\*.vcxproj" > $Null
+
+
       run_script "build/cache/write.ps1"
