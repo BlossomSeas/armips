@@ -72,12 +72,14 @@ build_script:
       echo "2"
 
 
+      # REM mkdir build && cd build
+      # REM cd build
+
+
 
   - cmd: |
       REM cmd.exe /c %Build%
 
-      REM mkdir build && cd build
-      REM cd build
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
 
