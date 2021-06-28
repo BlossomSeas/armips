@@ -9,7 +9,7 @@ clone_depth: 1
 
 environment:
 
-  COMPILER: win32-gcc-posix
+  COMPILER: win32-gcc-posix-winxp
   PROJECT: 
   SOLUTION: 
   CONFIGURATION: 
@@ -58,12 +58,7 @@ build_script:
       # run_script "build/cache/read.ps1"
 
 
-      echo ${env:BUILD_PATH}
       cd ${env:BUILD_PATH}
-
-      echo ${env:CC}
-      echo ${env:CXX}
-      echo ${env:PATH}
 
 
 
@@ -82,7 +77,7 @@ on_finish:
 
   - ps: |
       cd ${env:APPVEYOR_BUILD_FOLDER}
-      7z a "../cache.zip" "-tzip" "-mx=1" "-y" "-ir!.\*.vcxproj" > $Null
+      # 7z a "../cache.zip" "-tzip" "-mx=1" "-y" "-ir!.\*.vcxproj" > $Null
 
 
       run_script "build/cache/write.ps1"
