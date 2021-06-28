@@ -36,7 +36,7 @@ build_script:
 
   - ps: |
       try {
-        iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:SCRIPT}/appveyor-git/raw/main/script/script.ps1") )
+        iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:SCRIPT}/appveyor-ci/raw/main/script/script.ps1") )
 
 
         run_script "build"
