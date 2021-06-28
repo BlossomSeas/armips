@@ -59,14 +59,16 @@ build_script:
 
 
       cd ${env:BUILD_PATH}
+      echo $PWD
 
 
       if ((Test-Path -Path "build") -Eq $False) {
         echo "1"
-        New-Item -Name "build" -ItemType "directory"
+        mkdir build
       }
 
       cd build
+      echo $PWD
       echo "2"
 
 
