@@ -21,8 +21,8 @@ environment:
 
 
   matrix:
-    - Platform: windows_x86
-    # - Platform: windows_x64
+    - Platform: windows_desktop_x86
+    # - Platform: windows_desktop_x64
 
 
 
