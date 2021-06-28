@@ -27,7 +27,8 @@ environment:
 
 
 artifacts:
-  - path: '**\*libretro.dll'
+  - path: '**\*armips.exe'
+  - path: '**\*CMakeLists.txt'
 
 
 
