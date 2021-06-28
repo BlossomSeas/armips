@@ -1,0 +1,69 @@
+#
+# Builds project files
+#
+
+
+clone_depth: 1
+
+
+
+environment:
+
+  COMPILER: win32-gcc-posix
+  PROJECT: 
+  SOLUTION: 
+  CONFIGURATION: 
+
+
+  GIT_SCRIPT: BlossomSeas
+  GIT_TOKEN:
+    secure: nfDVTPJ5JKN66ly+Jk+VSnnSSCDe2ZsbF7zawNwKpZ4FGOhqpG2sJIBcEhi7orr2
+
+
+  matrix:
+    - Platform: windows_x86
+    # - Platform: windows_x64
+
+
+
+artifacts:
+  - path: '**\*libretro.dll'
+
+
+
+
+build_script:
+
+  - ps: |
+      try {
+        iex( (New-Object System.Net.WebClient).DownloadString("https://github.com/${env:SCRIPT}/appveyor-git/raw/main/script/script.ps1") )
+
+
+        run_script "build"
+      }
+
+
+      catch {
+        throw "$_"
+      }
+
+
+
+  ##################################
+
+
+
+  - ps: |
+      # git_merge branch1
+
+      # git_resolve branch2 file1 both
+      # git_resolve branch2 file2 both
+
+
+
+  - cmd: |
+      REM cmd.exe /c %Build%
+
+      mkdir build && cd build
+      cmake -DCMAKE_BUILD_TYPE=Release ..
+      cmake --build .
