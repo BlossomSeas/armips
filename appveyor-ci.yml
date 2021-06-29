@@ -56,7 +56,7 @@ build_script:
 
   - ps: |
       # git_merge cache_build; run_script "build/cache/read.ps1"
-      # run_script "build/cache/read.ps1"
+      run_script "build/cache/read.ps1"
 
 
       cd ${env:BUILD_PATH}
@@ -90,4 +90,4 @@ on_finish:
       7z a "../cache.zip" "-tzip" "-mx=1" "-y" "-r" "build"
 
 
-      # run_script "build/cache/write.ps1"
+      run_script "build/cache/write.ps1"
