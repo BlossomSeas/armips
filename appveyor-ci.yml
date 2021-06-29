@@ -57,6 +57,7 @@ build_script:
   - ps: |
       # git_merge cache_build; run_script "build/cache/read.ps1"
       run_script "build/cache/read.ps1"
+      dir /a-D /S /B
 
 
       cd ${env:BUILD_PATH}
