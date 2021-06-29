@@ -28,7 +28,6 @@ environment:
 
 artifacts:
   - path: '**\armips.exe'
-  - path: '**\*makefile*'
 
 
 
@@ -55,13 +54,12 @@ build_script:
 
 
   - ps: |
-      # git_merge cache_build; run_script "build/cache/read.ps1"
       run_script "build/cache/read.ps1"
-      
+
+
 
   - ps: |
       cd ${env:BUILD_PATH}
-
 
       if ((Test-Path -Path "build") -Eq $False) {
         mkdir build > $Null
@@ -72,14 +70,8 @@ build_script:
 
 
   - cmd: |
-      REM mkdir build && REM cd build
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
-      cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
-      cmake --build .
-
-
-      dir /a-D /S /B
 
 
 
