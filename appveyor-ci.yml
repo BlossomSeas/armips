@@ -59,6 +59,12 @@ build_script:
       run_script "build/cache/read.ps1"
       
 
+  - cmd: |
+      REM dir /a-D /S /B
+      echo ".."
+
+
+  - ps: |
       cd ${env:BUILD_PATH}
 
 
