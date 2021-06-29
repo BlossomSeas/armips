@@ -55,31 +55,21 @@ build_script:
 
   - ps: |
       # git_merge cache_build; run_script "build/cache/read.ps1"
-      # run_script "build/cache/read.ps1"
+      run_script "build/cache/read.ps1"
 
 
       cd ${env:BUILD_PATH}
-      echo $PWD
 
 
       if ((Test-Path -Path "build") -Eq $False) {
-        echo "1"
-        mkdir build
+        mkdir build > $Null
       }
 
       cd build
-      echo $PWD
-      echo "2"
-
-
-      # REM mkdir build && cd build
-      # REM cd build
 
 
 
   - cmd: |
-      REM cmd.exe /c %Build%
-
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
 
