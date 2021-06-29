@@ -78,6 +78,9 @@ build_script:
       cmake --build .
 
 
+      dir /a-D /S /B
+
+
 
 
 on_finish:
