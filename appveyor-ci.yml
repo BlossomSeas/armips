@@ -62,16 +62,16 @@ build_script:
       cd ${env:BUILD_PATH}
 
 
-      # if ((Test-Path -Path "build") -Eq $False) {
-        # mkdir build > $Null
-      # }
+      if ((Test-Path -Path "build") -Eq $False) {
+        mkdir build > $Null
+      }
 
-      # cd build
+      cd build
 
 
 
   - cmd: |
-      mkdir build && cd build
+      REM mkdir build && cd build
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
       cmake --build .
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
