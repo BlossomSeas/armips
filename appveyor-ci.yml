@@ -73,7 +73,11 @@ build_script:
   - cmd: |
       mkdir build && cd build
       cmake -G "MinGW Makefiles" -DCMAKE_BUILD_TYPE=Release ..
-      REM cmake --build .
+      cmake --build .
+      cmake --build .
+      cmake --build .
+      cmake --build .
+      cmake --build .
 
 
 
